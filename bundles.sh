@@ -28,6 +28,7 @@
 # curl build-essential git tldr vim neofetch duf
 # btop cmatrix fzf ripgrep fdclone cmake zip
 # speedtest-cli ranger tty-clock tmux unzip
+# locate
 #
 # ------------------------------------------
 
@@ -77,6 +78,10 @@ while  ! $valid ; do
 
 			echo "| installing ranger tmux"
 			apt install ranger tmux -y
+			echo " "
+
+			echo "| installing locate"
+			apt install locate -y
 			echo " "
 
 			echo "| Installation complete"

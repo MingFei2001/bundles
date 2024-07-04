@@ -125,6 +125,10 @@ echo " "
 # apt install hardinfo -y
 # echo " "
 
+# echo "| installing cpu-x"
+# apt install cpu-x -y
+# echo " "
+#
 # ------------------------------------------
 # Cybersecurity Applications
 

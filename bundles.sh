@@ -47,10 +47,6 @@ while  ! $valid ; do
 	
 	case $setupType in
 		1) valid=true;
-			echo "| You selected Basic installation.";
-			echo "| -----------------------------";
-			echo " "
-			# ------------------------------------------
 			echo "| installing curl build-essential"
 			apt install curl build-essential -y
 			echo " "
@@ -87,10 +83,6 @@ while  ! $valid ; do
 			echo " ";;
 			# ------------------------------------------
 		2) valid=true;
-			echo "| You selected Full installation.";
-			echo "| -----------------------------";
-			echo " "
-			# ------------------------------------------
 			echo "| installing curl build-essential"
 			apt install curl build-essential -y
 			echo " "
@@ -123,7 +115,6 @@ while  ! $valid ; do
 			apt install ranger tmux -y
 			echo " "
 
-			echo "| -----------------------------";
 			echo "| Installation complete"
 			echo " ";;
 		3) valid=true;

@@ -1,4 +1,4 @@
-# bundles
+# Bundles
 Basic Ubuntu &amp; Debian Linux Easy Setup
 
 ## Introduction

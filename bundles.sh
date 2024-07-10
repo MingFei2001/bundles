@@ -28,7 +28,7 @@
 # curl build-essential git tldr vim neofetch duf
 # btop cmatrix fzf ripgrep fdclone cmake zip
 # speedtest-cli ranger tty-clock tmux unzip
-# locate
+# locate bat
 #
 # ------------------------------------------
 
@@ -80,48 +80,17 @@ while  ! $valid ; do
 			apt install ranger tmux -y
 			echo " "
 
-			echo "| installing locate"
-			apt install locate -y
+			echo "| installing locate bat"
+			apt install locate bat -y
 			echo " "
 
 			echo "| Installation complete"
 			echo " ";;
 			# ------------------------------------------
 		2) valid=true;
-			echo "| installing curl build-essential"
-			apt install curl build-essential -y
-			echo " "
-
-			echo "| installing git tldr"
-			apt install git tldr -y
-			echo " "
-
-			echo "| installing vim neofetch duf"
-			apt install vim neofetch duf -y
-			echo " "
-
-			echo "| installing btop cmatrix"
-			apt install btop cmatrix -y
-			echo " "
-
-			echo "| installing fzf ripgrep"
-			apt install fzf ripgrep -y
-			echo " "
-
-			echo "| installing fdclone cmake"
-			apt install fdclone cmake -y
-			echo " "
-
-			echo "| installing speedtest-cli tty-clock"
-			apt install speedtest-cli tty-clock -y
-			echo " "
-
-			echo "| installing ranger tmux"
-			apt install ranger tmux -y
-			echo " "
-
-			echo "| Installation complete"
-			echo " ";;
+			echo "| You selected Full installation.";
+			echo "| Feature not implemented yet ..."
+			echo "| -----------------------------";;
 		3) valid=true;
 			echo "| You selected Extras installation.";
 			echo "| Feature not implemented yet ..."

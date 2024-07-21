@@ -1,11 +1,5 @@
-# bundles
+# Bundles
 Basic Ubuntu &amp; Debian Linux Easy Setup
-
-## Disclaimer
-
-This software is provided "as-is" and comes with no warranties or guarantees of any kind. The authors are not responsible for any damages, losses, or issues arising from the use of this software. Use it at your own risk. 
-
-Before using or deploying this software, please ensure it meets your needs and requirements. The authors are not liable for any errors or omissions, or for any direct or indirect damages resulting from the use of this software.
 
 ## Introduction
 
@@ -57,6 +51,12 @@ work in progress
 
 ### Extras
 work in progress
+
+## Disclaimer
+
+This software is provided "as-is" and comes with no warranties or guarantees of any kind. The authors are not responsible for any damages, losses, or issues arising from the use of this software. Use it at your own risk. 
+
+Before using or deploying this software, please ensure it meets your needs and requirements. The authors are not liable for any errors or omissions, or for any direct or indirect damages resulting from the use of this software.
 
 ## License
 

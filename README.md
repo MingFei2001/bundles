@@ -3,10 +3,27 @@ Basic Ubuntu &amp; Debian Linux Easy Setup
 
 ## Introduction
 
-Bundles is a script that automates installation of useful application for a fresh debian based systems.
+This bash script provides an easy way to install a curated set of applications on Debian-based systems. It offers different installation options (Basic, Advanced, and Extras) to suit various user needs. The script automates the process of installing multiple applications, saving time and effort after a fresh system install.
 
-### List of software
-1. Basic Installation
+## Getting Started
+
+1. Download the script:
+```bash
+git clone https://github.com/MingFei2001/bundles.git
+```
+2. Make the script executable:
+```bash
+cd bundles
+chmod +x bundles.sh
+```
+3. run the script
+```bash
+./bundles.sh
+```
+
+## List of application
+
+### Basic
 - curl
 - build-essential
 - git
@@ -19,25 +36,21 @@ Bundles is a script that automates installation of useful application for a fres
 - fzf
 - ripgrep
 - fdclone
-- cmake 
-- zip/unzip
+- cmake
+- zip
 - speedtest-cli
 - ranger
 - tty-clock
 - tmux
+- unzip
+- locate
+- bat
 
-2. Full installation
-- not completed yet
+### Advanced
+work in progress
 
-3. Extra installation
-- not completed yet
+### Extras
+work in progress
 
-## Getting Started
-Copy the following command to use the script
-
-```bash
-git clone https://github.com/MingFei2001/bundles.git
-cd bundles
-chmod +x ./bundles.sh
-sudo ./bundles.sh
-```
+## Licence
+work in progress

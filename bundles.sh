@@ -28,109 +28,66 @@
 # curl build-essential git tldr vim neofetch duf
 # btop cmatrix fzf ripgrep fdclone cmake zip
 # speedtest-cli ranger tty-clock tmux unzip
-# locate
+# locate bat
 #
 # ------------------------------------------
 
-echo "| -----------------------------"
-echo "| Bundle Setup Script"
-echo "| -----------------------------"
-echo "| [1] Basic installation"
-echo "| [2] Full installation"
-echo "| [3] Extras Only installation"
-echo "| [0] Abort"
-echo "| -----------------------------"
 
-valid=false
+# Define the lists of applications
+declare -A app_lists
+app_lists[basic]="curl build-essential git tldr vim neofetch duf btop cmatrix fzf ripgrep fdclone cmake zip speedtest-cli ranger tty-clock tmux unzip locate bat"
+app_lists[advanced]="${app_lists[basic]} app4 app5 app6 app7 app8 app9"
+app_lists[extras]="app10 app11 app12"
 
-while  ! $valid ; do
-	read -p "| Please select setup type: " -r setupType
-	
-	case $setupType in
-		1) valid=true;
-			echo "| installing curl build-essential"
-			apt install curl build-essential -y
-			echo " "
+echo "| -----------------------------";
+echo "| Bundle Setup Script";
+echo "| -----------------------------";
+echo "| [1] Basic installation";
+echo "| [2] Full installation";
+echo "| [3] Extras installation";
+echo "| [0] Abort";
+echo "| -----------------------------";
 
-			echo "| installing git tldr"
-			apt install git tldr -y
-			echo " "
+# Function to display menu and get user choice
+get_user_choice() {
+    while true; do
+        read -p "| Enter your choice (1-3): " choice
+        case $choice in
+            1) echo "basic"; break ;;
+            2) echo "advanced"; break ;;
+            3) echo "extras"; break ;;
+            *) echo "| Invalid choice. Please enter a number between 1 and 3." ;;
+        esac
+    done
+}
 
-			echo "| installing vim neofetch duf"
-			apt install vim neofetch duf -y
-			echo " "
+# Main script
+install_type=$(get_user_choice)
+apps_to_install=${app_lists[$install_type]}
 
-			echo "| installing btop cmatrix"
-			apt install btop cmatrix -y
-			echo " "
+if [ -z "$apps_to_install" ]; then
+    echo "| No applications to install."
+    exit 0
+fi
 
-			echo "| installing fzf ripgrep"
-			apt install fzf ripgrep -y
-			echo " "
+echo "| The following apps will be installed:"
+echo "| $apps_to_install"
 
-			echo "| installing fdclone cmake"
-			apt install fdclone cmake -y
-			echo " "
+read -p "| Do you want to proceed? (y/n): " confirm
+if [[ $confirm != [yY] ]]; then
+    echo "| Installation cancelled."
+    exit 0
+fi
 
-			echo "| installing speedtest-cli tty-clock"
-			apt install speedtest-cli tty-clock -y
-			echo " "
-
-			echo "| installing ranger tmux"
-			apt install ranger tmux -y
-			echo " "
-
-			echo "| installing locate"
-			apt install locate -y
-			echo " "
-
-			echo "| Installation complete"
-			echo " ";;
-			# ------------------------------------------
-		2) valid=true;
-			echo "| installing curl build-essential"
-			apt install curl build-essential -y
-			echo " "
-
-			echo "| installing git tldr"
-			apt install git tldr -y
-			echo " "
-
-			echo "| installing vim neofetch duf"
-			apt install vim neofetch duf -y
-			echo " "
-
-			echo "| installing btop cmatrix"
-			apt install btop cmatrix -y
-			echo " "
-
-			echo "| installing fzf ripgrep"
-			apt install fzf ripgrep -y
-			echo " "
-
-			echo "| installing fdclone cmake"
-			apt install fdclone cmake -y
-			echo " "
-
-			echo "| installing speedtest-cli tty-clock"
-			apt install speedtest-cli tty-clock -y
-			echo " "
-
-			echo "| installing ranger tmux"
-			apt install ranger tmux -y
-			echo " "
-
-			echo "| Installation complete"
-			echo " ";;
-		3) valid=true;
-			echo "| You selected Extras installation.";
-			echo "| Feature not implemented yet ..."
-			echo "| -----------------------------";;
-		0) valid=true; echo "| Program aborting ...";;
-		*) echo "| Invalid input.";echo "| -----------------------------";;
-	esac
-
+# Loop through the apps and install them
+for app in $apps_to_install; do
+    echo "| Installing $app..."
+    # Uncomment the following line to actually install the apps
+    if sudo apt-get install -y "$app"; then
+        echo "| $app installed successfully"
+    else
+        echo "| Failed to install $app"
+    fi
 done
 
-echo "| Program Exiting ..."
-echo "| -----------------------------"
+echo "| Installation complete!"

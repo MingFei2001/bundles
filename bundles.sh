@@ -119,14 +119,13 @@ for app in $apps_to_install; do
     fi
 done
 
-# Installing Rust
-
+# Installing Rust if installed
 if [[ $apps_to_install == "rustup" ]]; then
     echo "| Installing Rust programming language..."
     rustup install stable
 fi
 
-# Setting up the SSH server
+# Setting up the SSH server if installed
 if [[ $apps_to_install == "openssh-server" ]]; then
     echo "| Setting up SSH server..."
     sudo systemctl enable ssh

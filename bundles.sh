@@ -29,7 +29,7 @@
 # curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync
 #
 # CLI Tools:
-# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx
+# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava
 #
 # Disk Management Tools:
 # bleachbit stacer gnome-disk-utility gparted duf
@@ -48,7 +48,7 @@
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync"
-app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf"
 app_lists[programming]="python3-full python3-virtualenv golang npm nodejs gcc rustup openssh-server"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv"

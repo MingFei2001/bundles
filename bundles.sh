@@ -110,6 +110,7 @@ if [[ $confirm != [yY] ]]; then
 fi
 
 # Loop through the apps and install them
+sudo apt update
 for app in $apps_to_install; do
     echo "| Installing $app..."
     if sudo apt-get install -y "$app"; then
@@ -123,6 +124,8 @@ done
 if [[ $apps_to_install == "rustup" ]]; then
     echo "| Installing Rust programming language..."
     rustup install stable
+else
+    printf "\033[31m| Not installing Rust\n"
 fi
 
 # Setting up the SSH server if installed
@@ -130,6 +133,8 @@ if [[ $apps_to_install == "openssh-server" ]]; then
     echo "| Setting up SSH server..."
     sudo systemctl enable ssh
     sudo systemctl start ssh
+else
+    printf "\033[31m| Not setting up SSH\n"
 fi
 
 echo "| Installation complete!"

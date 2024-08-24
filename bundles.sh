@@ -120,12 +120,17 @@ for app in $apps_to_install; do
 done
 
 # Installing Rust
-echo "| Installing Rust programming language..."
-rustup install stable
+
+if [[ $apps_to_install == "rustup" ]]; then
+    echo "| Installing Rust programming language..."
+    rustup install stable
+fi
 
 # Setting up the SSH server
-echo "| Setting up SSH server..."
-sudo systemctl enable ssh
-sudo systemctl start ssh
+if [[ $apps_to_install == "openssh-server" ]]; then
+    echo "| Setting up SSH server..."
+    sudo systemctl enable ssh
+    sudo systemctl start ssh
+fi
 
 echo "| Installation complete!"

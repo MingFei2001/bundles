@@ -133,7 +133,7 @@ echo " "
 # Cybersecurity Applications
 
 # echo "| installing nmap"
-# apt install netcat -y
+# apt install nmap -y
 # echo " "
 
 # echo "| installing netcat"

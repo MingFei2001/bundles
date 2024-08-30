@@ -26,38 +26,38 @@
 # List of software
 #
 # Basic Tools:
-# curl build-essential htop git vim fzf ripgrep fdclone cmake zip 
-# tmux unzip locate bat jq wget rsync
+# curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux
+# unzip locate bat jq wget rsync openssh-server
 #
 # CLI Tools:
-# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava
+# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
 #
 # Desktop Applications
-# qalculate-gtk
+# qalculate-gtk hardinfo cpu-x libreoffice
 #
 # Disk Management Tools:
-# bleachbit stacer gnome-disk-utility gparted duf
+# bleachbit stacer gnome-disk-utility gparted duf fdisk
 #
 # Programming Toolkit:
-# python3-full python3-virtualenv golang npm nodejs gcc rustup openssh-server
+# python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose
 #
 # Media Editor and Viewer:
-# kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv
+# kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid
 #
 # Hacking and Security Tools:
-# nmap wireshark gufw clamav clamtk gnupg
+# nmap wireshark tshark gufw clamav clamtk gnupg netcat
 #
 # ------------------------------------------
 
 # Define the lists of applications
 declare -A app_lists
-app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync"
-app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava"
-app_lists[desktop]="qalculate-gtk"
-app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf"
-app_lists[programming]="python3-full python3-virtualenv golang npm nodejs gcc rustup openssh-server"
-app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv"
-app_lists[hacking]="nmap wireshark gufw clamav clamtk gnupg"
+app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench"
+app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice"
+app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk"
+app_lists[programming]="${app_lists[basic]} python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose"
+app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid"
+app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
 
 echo "| -----------------------------"
@@ -70,7 +70,7 @@ echo "| [4] Programming Toolkit"
 echo "| [5] Media Editor and Viewer"
 echo "| [6] Disk Management Tools"
 echo "| [7] Hacking Tools"
-echo "| [8] Full Installation"
+echo "| [8] Full Desktop Suite"
 echo "| [0] Abort"
 echo "| -----------------------------"
 
@@ -88,7 +88,7 @@ get_user_choice() {
             7) echo "hacking"; break ;;
             8) echo "full"; break ;;
             0) echo "abort"; break ;;
-            *) echo "Invalid choice. Please enter a number between 0 and 7." ;;
+            *) echo "Invalid choice. Please enter a number between 0 and 8." ;;
         esac
     done
 }

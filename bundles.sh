@@ -26,10 +26,14 @@
 # List of software
 #
 # Basic Tools:
-# curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync
+# curl build-essential htop git vim fzf ripgrep fdclone cmake zip 
+# tmux unzip locate bat jq wget rsync
 #
 # CLI Tools:
 # btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava
+#
+# Desktop Applications
+# qalculate-gtk
 #
 # Disk Management Tools:
 # bleachbit stacer gnome-disk-utility gparted duf
@@ -49,22 +53,24 @@
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync"
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava"
+app_lists[desktop]="qalculate-gtk"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf"
 app_lists[programming]="python3-full python3-virtualenv golang npm nodejs gcc rustup openssh-server"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv"
 app_lists[hacking]="nmap wireshark gufw clamav clamtk gnupg"
-app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[programming]} ${app_lists[media]}"
+app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
 
 echo "| -----------------------------"
 echo "| Bundle Setup Script"
 echo "| -----------------------------"
 echo "| [1] Basic Tools"
 echo "| [2] CLI Tools"
-echo "| [3] Programming Toolkit"
-echo "| [4] Media Editor and Viewer"
-echo "| [5] Disk Management Tools"
-echo "| [6] Hacking Tools"
-echo "| [7] Full Installation"
+echo "| [3] Desktop Application"
+echo "| [4] Programming Toolkit"
+echo "| [5] Media Editor and Viewer"
+echo "| [6] Disk Management Tools"
+echo "| [7] Hacking Tools"
+echo "| [8] Full Installation"
 echo "| [0] Abort"
 echo "| -----------------------------"
 
@@ -75,11 +81,12 @@ get_user_choice() {
         case $choice in
             1) echo "basic"; break ;;
             2) echo "cli"; break ;;
-            3) echo "programming"; break ;;
-            4) echo "media"; break ;;
-            5) echo "diskman"; break ;;
-            6) echo "hacking"; break ;;
-            7) echo "full"; break ;;
+            3) echo "desktop"; break ;;
+            4) echo "programming"; break ;;
+            5) echo "media"; break ;;
+            6) echo "diskman"; break ;;
+            7) echo "hacking"; break ;;
+            8) echo "full"; break ;;
             0) echo "abort"; break ;;
             *) echo "Invalid choice. Please enter a number between 0 and 7." ;;
         esac

@@ -27,7 +27,7 @@
 #
 # Basic Tools:
 # curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux
-# unzip locate bat jq wget rsync openssh-server
+# unzip locate bat jq wget rsync openssh-server 7zip
 #
 # CLI Tools:
 # btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
@@ -51,7 +51,7 @@
 
 # Define the lists of applications
 declare -A app_lists
-app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server"
+app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip"
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"

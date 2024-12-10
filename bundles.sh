@@ -49,6 +49,9 @@
 #
 # ------------------------------------------
 
+# Variables
+LOGFILE="install.log"
+
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip"
@@ -60,19 +63,35 @@ app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio f
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
 
-echo "| -----------------------------"
-echo "| Bundle Setup Script"
-echo "| -----------------------------"
-echo "| [1] Basic Tools"
-echo "| [2] CLI Tools"
-echo "| [3] Desktop Application"
-echo "| [4] Programming Toolkit"
-echo "| [5] Media Editor and Viewer"
-echo "| [6] Disk Management Tools"
-echo "| [7] Hacking Tools"
-echo "| [8] Full Desktop Suite"
-echo "| [0] Abort"
-echo "| -----------------------------"
+# Print ASCII art banner
+print_ascii_art() {
+    cat << "EOF"
+# ------------------------------------------
+    ____  __  ___   ______  __    ___________
+   / __ )/ / / / | / / __ \/ /   / ____/ ___/
+  / __  / / / /  |/ / / / / /   / __/  \__ \
+ / /_/ / /_/ / /|  / /_/ / /___/ /___ ___/ /
+/_____/\____/_/ |_/_____/_____/_____//____/
+# ------------------------------------------
+EOF
+}
+
+# Print option menu
+print_menu() {
+    echo "| -----------------------------"
+    echo "| Bundle Setup Script"
+    echo "| -----------------------------"
+    echo "| [1] Basic Tools"
+    echo "| [2] CLI Tools"
+    echo "| [3] Desktop Application"
+    echo "| [4] Programming Toolkit"
+    echo "| [5] Media Editor and Viewer"
+    echo "| [6] Disk Management Tools"
+    echo "| [7] Hacking Tools"
+    echo "| [8] Full Desktop Suite"
+    echo "| [0] Abort"
+    echo "| -----------------------------"
+}
 
 # Function to display menu and get user choice
 get_user_choice() {
@@ -94,54 +113,92 @@ get_user_choice() {
 }
 
 # Main script
-install_type=$(get_user_choice)
-if [ "$install_type" == "abort" ]; then
-    echo "| Installation aborted."
-    exit 0
-fi
+main() {
+    # Capture force quitting event and exit safely
+    trap "echo 'Exiting...'; exit" SIGINT
 
-apps_to_install=${app_lists[$install_type]}
+    print_ascii_art
+    echo ""
+    print_menu
 
-if [ -z "$apps_to_install" ]; then
-    echo "| No applications to install."
-    exit 0
-fi
-
-echo "| The following apps will be installed:"
-echo "| $apps_to_install"
-
-read -p "| Do you want to proceed? (y/n): " confirm
-if [[ $confirm != [yY] ]]; then
-    echo "| Installation cancelled."
-    exit 0
-fi
-
-# Loop through the apps and install them
-sudo apt update
-for app in $apps_to_install; do
-    echo "| Installing $app..."
-    if sudo apt-get install -y "$app"; then
-        echo "| $app installed successfully"
-    else
-        echo "| Failed to install $app"
+    # Retrieve installation options
+    install_type=$(get_user_choice)
+    if [ "$install_type" == "abort" ]; then
+        echo "| Installation aborted."
+        echo "| Installation aborted by the user." >> "$LOGFILE"
+        exit 0
     fi
-done
+    apps_to_install=${app_lists[$install_type]}
 
-# Installing Rust if installed
-if [[ $apps_to_install == "rustup" ]]; then
-    echo "| Installing Rust programming language..."
-    rustup install stable
-else
-    printf "\033[31m| Not installing Rust\n"
-fi
+    # if the list is empty
+    if [ -z "$apps_to_install" ]; then
+        echo "| Error: no applications to install."
+        echo "| Error: no applications to install." >> "$LOGFILE"
+        exit 1
+    fi
 
-# Setting up the SSH server if installed
-if [[ $apps_to_install == "openssh-server" ]]; then
-    echo "| Setting up SSH server..."
-    sudo systemctl enable ssh
-    sudo systemctl start ssh
-else
-    printf "\033[31m| Not setting up SSH\n"
-fi
+    # Confirmation message
+    echo "| The following apps will be installed:"
+    echo "| $apps_to_install"
+    read -p "| Do you want to proceed? (y/n): " confirm
+    if [[ $confirm != [yY] ]]; then
+        echo "| Installation cancelled."
+        echo "| Installation cancelled by the user." >> "$LOGFILE"
+        exit 0
+    fi
 
-echo "| Installation complete!"
+    # Loop through the apps and install them
+    sudo apt update
+    for app in $apps_to_install; do
+        echo "| Installing $app..."
+        echo "| Installing $app..." >> "$LOGFILE"
+        if sudo apt-get install -y "$app" >> "$LOGFILE" 2>&1; then
+            echo "| $app installed successfully"
+            echo "| $app installed successfully" >> "$LOGFILE"
+        else
+            echo "| Failed to install $app"
+            echo "| Failed to install $app" >> "$LOGFILE"
+        fi
+    done
+
+    # Installing Rust if installed
+    if [[ "$apps_to_install" =~ "rustup" ]]; then
+        echo "| Installing Rust programming language..."
+        echo "| Installing Rust programming language..." >> "$LOGFILE"
+
+        if rustup install stable >> "$LOGFILE" 2>&1; then
+            echo "| Rust installed successfully"
+            echo "| Rust installed successfully" >> "$LOGFILE"
+        else
+            echo "| Failed to install Rust"
+            echo "| Failed to install Rust" >> "$LOGFILE"
+        fi
+    else
+        printf "\033[31m| Not installing Rust\n"
+        printf "\033[31m| Not installing Rust\n" >> "$LOGFILE"
+    fi
+
+    # Setting up the SSH server if installed
+    if [[ $apps_to_install =~ "openssh-server" ]]; then
+        echo "| Setting up SSH server..."
+        echo "| Setting up SSH server..." >> "$LOGFILE"
+
+        if sudo systemctl enable ssh >> "$LOGFILE" 2>&1 && sudo systemctl start ssh >> "$LOGFILE" 2>&1; then
+            echo "| SSH server set up successfully"
+            echo "| SSH server set up successfully" >> "$LOGFILE"
+        else
+            echo "| Failed to set up SSH server"
+            echo "| Failed to set up SSH server" >> "$LOGFILE"
+        fi
+
+    else
+        printf "\033[31m| Not setting up SSH\n"
+        printf "\033[31m| Not setting up SSH\n" >> "$LOGFILE"
+
+    fi
+
+    echo "| Installation complete!"
+    echo "| Installation complete!" >> "$LOGFILE"
+}
+
+main "$@"

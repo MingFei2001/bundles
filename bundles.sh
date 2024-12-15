@@ -58,7 +58,7 @@ app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zi
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
-app_lists[programming]="${app_lists[basic]} python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose"
+app_lists[programming]="${app_lists[basic]} python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
@@ -152,13 +152,36 @@ main() {
     for app in $apps_to_install; do
         echo "| Installing $app..."
         echo "| Installing $app..." >> "$LOGFILE"
-        if sudo apt-get install -y "$app" >> "$LOGFILE" 2>&1; then
-            echo "| $app installed successfully"
-            echo "| $app installed successfully" >> "$LOGFILE"
-        else
-            echo "| Failed to install $app"
-            echo "| Failed to install $app" >> "$LOGFILE"
-        fi
+
+        case "$app" in
+            "lazygit")
+                if go install github.com/jesseduffield/lazygit@latest >> "$LOGFILE" 2>&1; then
+                    echo "| $app installed successfully"
+                    echo "| $app installed successfully" >> "$LOGFILE"
+                else
+                    echo "| Failed to install $app"
+                    echo "| Failed to install $app" >> "$LOGFILE"
+                fi
+                    ;;
+            "lazydocker")
+                if go install github.com/jesseduffield/lazydocker@latest >> "$LOGFILE" 2>&1; then
+                    echo "| $app installed successfully"
+                    echo "| $app installed successfully" >> "$LOGFILE"
+                else
+                    echo "| Failed to install $app"
+                    echo "| Failed to install $app" >> "$LOGFILE"
+                fi
+                    ;;
+            *)
+                if sudo apt-get install -y "$app" >> "$LOGFILE" 2>&1; then
+                    echo "| $app installed successfully"
+                    echo "| $app installed successfully" >> "$LOGFILE"
+                else
+                    echo "| Failed to install $app"
+                    echo "| Failed to install $app" >> "$LOGFILE"
+                fi
+                    ;;
+        esac
     done
 
     # Installing Rust if installed

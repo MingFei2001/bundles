@@ -39,7 +39,7 @@
 # bleachbit stacer gnome-disk-utility gparted duf fdisk
 #
 # Programming Toolkit:
-# python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose
+# python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose
 #
 # Media Editor and Viewer:
 # kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid
@@ -58,7 +58,7 @@ app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zi
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
-app_lists[programming]="${app_lists[basic]} python3-full python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
+app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"

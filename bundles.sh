@@ -30,7 +30,7 @@
 # unzip locate bat jq wget rsync openssh-server 7zip
 #
 # CLI Tools:
-# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock
+# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp
 #
 # Desktop Applications
 # qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
@@ -55,7 +55,7 @@ LOGFILE="install.log"
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip"
-app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"

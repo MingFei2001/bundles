@@ -30,9 +30,10 @@
 # unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon
 #
 # CLI Tools:
-# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh
+# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
+# vlock mocp pipes-sh iotop iftop atop nvtop perf wavemon
 #
-# Desktop Applications
+# Desktop Applications:
 # qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
 #
 # Disk Management Tools:
@@ -55,7 +56,7 @@ LOGFILE="install.log"
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon"
-app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop perf wavemon"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"

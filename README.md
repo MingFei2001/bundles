@@ -4,7 +4,6 @@ Basic Ubuntu &amp; Debian Linux Easy Setup
 ## Table of Contents
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
-- [Current Selection](#current-selections)
 - [License](#license)
 
 ## Introduction
@@ -18,18 +17,8 @@ This bash script provides an easy way to install a curated set of applications o
 bash bundles.sh
 ```
 
-Select from one of the options in the menu.
-
-## Current Selections
-1. Basic Tools
-2. CLI Tools
-3. Desktop Application
-4. Programming Toolkit
-5. Media Editor and Viewer
-6. Disk Management Tools
-7. Hacking Tools
-8. Full Desktop Suite
+## TODO
++ Create an ansible playbook to mass deploy
 
 ## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.

@@ -23,7 +23,7 @@
 # ------------------------------------------
 
 # ------------------------------------------
-# TODO: Need to reorganize some part (monitoring)
+# TODO: Need to reorganize some part (monitoring/system/asthethic)
 #
 # List of software
 #
@@ -33,7 +33,7 @@
 #
 # CLI Tools:
 # btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
-# vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon
+# vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw
 #
 # Desktop Applications:
 # qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
@@ -58,7 +58,7 @@ LOGFILE="install.log"
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon"
-app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"

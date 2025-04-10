@@ -42,10 +42,12 @@
 # bleachbit stacer gnome-disk-utility gparted duf fdisk
 #
 # Programming Toolkit:
-# python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose
+# python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup
+# docker.io docker-compose
 #
 # Media Editor and Viewer:
-# kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid
+# kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable
+# mpv celluloid
 #
 # Hacking and Security Tools:
 # nmap wireshark tshark gufw clamav clamtk gnupg netcat

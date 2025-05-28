@@ -39,7 +39,7 @@
 # qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
 #
 # Disk Management Tools:
-# bleachbit stacer gnome-disk-utility gparted duf fdisk
+# bleachbit stacer gnome-disk-utility gparted duf fdisk ncdu
 #
 # Programming Toolkit:
 # python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup
@@ -62,7 +62,7 @@ declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon"
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
-app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark"
+app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ndcu"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"

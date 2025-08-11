@@ -33,8 +33,8 @@
 # mtr unp
 #
 # CLI Tools:
-# btop tldr fastfetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
-# vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai
+# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
+# vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai s-tui
 #
 # Desktop Applications:
 # qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
@@ -48,7 +48,7 @@
 #
 # Media Editor and Viewer:
 # kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable
-# mpv celluloid digikam
+# mpv celluloid
 #
 # Hacking and Security Tools:
 # nmap wireshark tshark gufw clamav clamtk gnupg netcat
@@ -61,11 +61,11 @@ LOGFILE="install.log"
 # Define the lists of applications
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon mtr unp"
-app_lists[cli]="btop tldr fastfetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai"
+app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai s-tui"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ndcu"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
-app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid digikam"
+app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
 

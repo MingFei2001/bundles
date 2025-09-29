@@ -195,45 +195,39 @@ main() {
     for app in $apps_to_install; do
         log_info "Installing $app..."
 
+        # Choose the right install command
         case "$app" in
             "lazygit")
-                if go install github.com/jesseduffield/lazygit@latest >> "$LOGFILE" 2>&1; then
-                    log_success "$app installed successfully"
-                else
-                    log_error "Failed to install $app"
-                fi
-                    ;;
+                cmd="go install github.com/jesseduffield/lazygit@latest"
+                ;;
             "lazydocker")
-                if go install github.com/jesseduffield/lazydocker@latest >> "$LOGFILE" 2>&1; then
-                    log_success "$app installed successfully"
-                else
-                    log_error "Failed to install $app"
-                fi
-                    ;;
+                cmd="go install github.com/jesseduffield/lazydocker@latest"
+                ;;
             *)
-                if sudo apt-get install -y "$app" >> "$LOGFILE" 2>&1; then
-                    log_success "$app installed successfully"
-                else
-                    log_error "Failed to install $app"
-                fi
-                    ;;
+                cmd="sudo apt-get install -y $app"
+                ;;
         esac
+
+        # Execute and log (same for all)
+        if $cmd >> "$LOGFILE" 2>&1; then
+            log_success "$app installed successfully"
+        else
+            log_error "Failed to install $app"
+        fi
     done
 
-    # Installing Rust if installed
+    # Installing Rust if rustup was installed
     if [[ "$apps_to_install" =~ "rustup" ]]; then
-        log_info "Installing Rust programming language..."
+        log_info "Setting up Rust programming language..."
 
         if rustup install stable >> "$LOGFILE" 2>&1; then
-            log_success "Rust installed successfully"
+            log_success "Rust configured successfully"
         else
-            log_error "Failed to install Rust"
+            log_error "Failed to configure Rust"
         fi
-    else
-        log_info "Not installing Rust (not selected)"
     fi
 
-    # Setting up the SSH server if installed
+    # Setting up SSH server if openssh-server was installed
     if [[ $apps_to_install =~ "openssh-server" ]]; then
         log_info "Setting up SSH server..."
 
@@ -242,8 +236,6 @@ main() {
         else
             log_error "Failed to set up SSH server"
         fi
-    else
-        log_info "Not setting up SSH (not selected)"
     fi
 
     log_success "=== Installation completed successfully! ==="

@@ -83,19 +83,60 @@ EOF
 
 # Print option menu
 print_menu() {
-    echo "| -----------------------------"
-    echo "| Bundle Setup Script"
-    echo "| -----------------------------"
-    echo "| [1] Basic Tools"
-    echo "| [2] CLI Tools"
-    echo "| [3] Desktop Application"
-    echo "| [4] Programming Toolkit"
-    echo "| [5] Media Editor and Viewer"
-    echo "| [6] Disk Management Tools"
-    echo "| [7] Hacking Tools"
-    echo "| [8] Full Desktop Suite"
-    echo "| [0] Abort"
-    echo "| -----------------------------"
+    echo "╭─────────────────────────────────────────╮"
+    echo "│           Bundle Setup Script           │"
+    echo "├─────────────────────────────────────────┤"
+    echo "│ [1] Basic Tools                         │"
+    echo "│ [2] CLI Tools                           │"
+    echo "│ [3] Desktop Applications                │"
+    echo "│ [4] Programming Toolkit                 │"
+    echo "│ [5] Media Editor and Viewer             │"
+    echo "│ [6] Disk Management Tools               │"
+    echo "│ [7] Security Tools                      │"
+    echo "│ [8] Full Desktop Suite                  │"
+    echo "│ [0] Abort                               │"
+    echo "╰─────────────────────────────────────────╯"
+}
+
+# Show help information
+show_help() {
+    cat << EOF
+BUNDLES - Essential Package Installation Script
+
+USAGE:
+    ./bundles.sh [--help]
+
+PACKAGE CATEGORIES:
+    [1] Basic Tools
+        curl, build-essential, htop, git, vim, fzf, ripgrep, cmake, zip, tmux,
+        unzip, locate, bat, jq, wget, rsync, openssh-server, mtr, unp
+
+    [2] CLI Tools
+        btop, tldr, neofetch, cmatrix, speedtest-cli, ranger, tty-clock, lynx,
+        cava, sysbench, vlock, mocp, pipes-sh, iotop, iftop, atop, nvtop
+
+    [3] Desktop Applications
+        qalculate-gtk, hardinfo, cpu-x, libreoffice, gdebi, thunderbird
+
+    [4] Programming Toolkit
+        python3-full, python3-pip, golang, npm, nodejs, gcc, rustup, docker.io,
+        docker-compose, lazygit, lazydocker
+
+    [5] Media Editor and Viewer
+        kdenlive, vlc, blender, audacity, gimp, inkscape, krita, obs-studio,
+        ffmpeg, darktable, mpv, celluloid, geeqie
+
+    [6] Disk Management Tools
+        bleachbit, stacer, gnome-disk-utility, gparted, duf, fdisk, ncdu
+
+    [7] Security Tools
+        nmap, wireshark, tshark, gufw, clamav, clamtk, gnupg, netcat
+
+    [8] Full Suite
+        All categories combined
+
+For more info: https://github.com/mingfei/bundles
+EOF
 }
 
 # Function to display menu and get user choice

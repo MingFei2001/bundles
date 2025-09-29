@@ -1,11 +1,11 @@
 <h1 align="center">
-Bundles
+    Bundles
 </h1>
 
 <p align="center">
     <b>
-Basic Ubuntu &amp; Debian Linux Easy Setup
-</b>
+            Basic Ubuntu &amp; Debian Linux Easy Setup
+    </b>
 </p>
 
 ## Introduction
@@ -27,10 +27,9 @@ The script automates the process of installing multiple applications, saving tim
 
 ```bash
 # Clone and run the script
-git clone https://github.com/mingfei/bundles.git
+git clone https://github.com/MingFei2001/bundles.git
 cd bundles
-chmod +x bundles.sh
-./bundles.sh
+bash bundles.sh
 
 # For detailed package information
 ./bundles.sh --help

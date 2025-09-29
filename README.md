@@ -1,8 +1,10 @@
 # Bundles
 
-<b align="center">
+<p align="center">
+    <b>
 Basic Ubuntu &amp; Debian Linux Easy Setup
 </b>
+</p>
 
 ## Introduction
 

@@ -160,6 +160,22 @@ get_user_choice() {
 
 # Main script
 main() {
+
+    # Parse command line arguments
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --help|-h)
+                show_help
+                exit 0
+                ;;
+            *)
+                log_error "Unknown option: $1"
+                echo "Use --help for usage information"
+                exit 1
+                ;;
+        esac
+    done
+
     # Initialize logging
     log_info "=== Bundle Setup Script Started ==="
 

@@ -216,26 +216,35 @@ main() {
         fi
     done
 
-    # Installing Rust if rustup was installed
-    if [[ "$apps_to_install" =~ "rustup" ]]; then
-        log_info "Setting up Rust programming language..."
+    # Post-installation setup function
+    post_install_setup() {
+        local package="$1"
+        local description="$2"
+        local command="$3"
 
-        if rustup install stable >> "$LOGFILE" 2>&1; then
-            log_success "Rust configured successfully"
-        else
-            log_error "Failed to configure Rust"
+        if [[ "$apps_to_install" =~ "$package" ]]; then
+            log_info "Setting up $description..."
+
+            if eval "$command" >> "$LOGFILE" 2>&1; then
+                log_success "$description set up successfully"
+            else
+                log_error "Failed to set up $description"
+            fi
         fi
-    fi
+    }
 
-    # Setting up SSH server if openssh-server was installed
-    if [[ $apps_to_install =~ "openssh-server" ]]; then
-        log_info "Setting up SSH server..."
+    # Run post-installation setup
+    post_install_setup "rustup" "Rust programming language" "rustup install stable"
+    post_install_setup "openssh-server" "SSH server" "sudo systemctl enable ssh && sudo systemctl start ssh"
+    post_install_setup "locate" "locate database" "sudo updatedb"
 
-        if sudo systemctl enable ssh >> "$LOGFILE" 2>&1 && sudo systemctl start ssh >> "$LOGFILE" 2>&1; then
-            log_success "SSH server set up successfully"
-        else
-            log_error "Failed to set up SSH server"
-        fi
+    # Docker reminder if installed
+    if [[ "$apps_to_install" =~ "docker.io" ]]; then
+        echo ""
+        log_info "IMPORTANT: To use Docker without sudo, run the following command:"
+        echo "           sudo usermod -aG docker \$USER"
+        echo "           Then log out and back in for changes to take effect."
+        echo ""
     fi
 
     log_success "=== Installation completed successfully! ==="

@@ -142,7 +142,7 @@ EOF
 # Function to display menu and get user choice
 get_user_choice() {
     while true; do
-        read -p "| Enter your choice (0-7): " choice
+        read -p "│ Enter your choice (0-8): " choice
         case $choice in
             1) echo "basic"; break ;;
             2) echo "cli"; break ;;
@@ -153,7 +153,7 @@ get_user_choice() {
             7) echo "hacking"; break ;;
             8) echo "full"; break ;;
             0) echo "abort"; break ;;
-            *) echo "Invalid choice. Please enter a number between 0 and 8." ;;
+            *) echo "│ Invalid choice. Please enter a number between 0 and 8." ;;
         esac
     done
 }

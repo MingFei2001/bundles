@@ -147,7 +147,7 @@ PACKAGE CATEGORIES:
     [8] Full Suite
         All categories combined
 
-For more info: https://github.com/mingfei/bundles
+For more info: https://github.com/MingFei2001/bundles
 EOF
 }
 

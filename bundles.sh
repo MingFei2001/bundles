@@ -3,60 +3,21 @@
 # Enhanced error handling
 set -euo pipefail
 
-# ------------------------------------------
+#═══════════════════════════════════════════════════════════════════════════════
 #     ____  __  ___   ______  __    ___________
 #    / __ )/ / / / | / / __ \/ /   / ____/ ___/
 #   / __  / / / /  |/ / / / / /   / __/  \__ \
 #  / /_/ / /_/ / /|  / /_/ / /___/ /___ ___/ /
 # /_____/\____/_/ |_/_____/_____/_____//____/
-# ------------------------------------------
-
-# ------------------------------------------
-# Welcome to the BUNDLE Setup Script
-# Essential Setup for Ubuntu and Debian Systems
-# ------------------------------------------
-# Created by mingfei
-# ------------------------------------------
-# This script is designed for easy installation of
-# essential applications. Simply clone this
-# repository and execute the script in your bash
-# shell to install a selection of useful apps.
-# ------------------------------------------
-# Note: Use this script at your own risk.
-# ------------------------------------------
-
-# ------------------------------------------
-# TODO: Need to reorganize some part (monitoring/system/asthethic)
+#═══════════════════════════════════════════════════════════════════════════════
+# BUNDLES - Essential Package Installation Script for Ubuntu/Debian
+# Created by: mingfei
+# Usage: ./bundles.sh [--help]
 #
-# List of software
-#
-# Basic Tools:
-# curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux
-# unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon
-# mtr unp
-#
-# CLI Tools:
-# btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench
-# vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai s-tui
-#
-# Desktop Applications:
-# qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird
-#
-# Disk Management Tools:
-# bleachbit stacer gnome-disk-utility gparted duf fdisk ncdu
-#
-# Programming Toolkit:
-# python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup
-# docker.io docker-compose
-#
-# Media Editor and Viewer:
-# kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable
-# mpv celluloid geeqie
-#
-# Hacking and Security Tools:
-# nmap wireshark tshark gufw clamav clamtk gnupg netcat
-#
-# ------------------------------------------
+# Installs curated collections of packages across different categories:
+# • Basic Tools      • CLI Utilities     • Desktop Apps      • Programming
+# • Media Tools      • Disk Management   • Security Tools    • Full Suite
+#═══════════════════════════════════════════════════════════════════════════════
 
 # Variables
 LOGFILE="install.log"

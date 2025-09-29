@@ -1,16 +1,8 @@
 # Bundles
 
-<p align="left">
-         ____  __  ___   ______  __    ___________
-        / __ )/ / / / | / / __ \/ /   / ____/ ___/
-       / __  / / / /  |/ / / / / /   / __/  \__ \
-      / /_/ / /_/ / /|  / /_/ / /___/ /___ ___/ /
-     /_____/\____/_/ |_/_____/_____/_____//____/
-</p>
-
-<p align="center">
+<b align="center">
 Basic Ubuntu &amp; Debian Linux Easy Setup
-</p>
+</b>
 
 ## Introduction
 

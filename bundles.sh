@@ -83,19 +83,29 @@ EOF
 
 # Print option menu
 print_menu() {
-    echo "╭─────────────────────────────────────────╮"
-    echo "│           Bundle Setup Script           │"
-    echo "├─────────────────────────────────────────┤"
-    echo "│ [1] Basic Tools                         │"
-    echo "│ [2] CLI Tools                           │"
-    echo "│ [3] Desktop Applications                │"
-    echo "│ [4] Programming Toolkit                 │"
-    echo "│ [5] Media Editor and Viewer             │"
-    echo "│ [6] Disk Management Tools               │"
-    echo "│ [7] Security Tools                      │"
-    echo "│ [8] Full Desktop Suite                  │"
-    echo "│ [0] Abort                               │"
-    echo "╰─────────────────────────────────────────╯"
+    # Calculate package counts
+    local basic_count=$(echo ${app_lists[basic]} | wc -w)
+    local cli_count=$(echo ${app_lists[cli]} | wc -w)
+    local desktop_count=$(echo ${app_lists[desktop]} | wc -w)
+    local programming_count=$(echo ${app_lists[programming]} | wc -w)
+    local media_count=$(echo ${app_lists[media]} | wc -w)
+    local diskman_count=$(echo ${app_lists[diskman]} | wc -w)
+    local hacking_count=$(echo ${app_lists[hacking]} | wc -w)
+    local full_count=$(echo ${app_lists[full]} | wc -w)
+
+    echo "╭─────────────────────────────────────────────────────╮"
+    echo "│               Bundle Setup Script                   │"
+    echo "├─────────────────────────────────────────────────────┤"
+    printf "│ [1] Basic Tools                  %-18s │\n" "($basic_count packages)"
+    printf "│ [2] CLI Tools                    %-18s │\n" "($cli_count packages)"
+    printf "│ [3] Desktop Applications         %-18s │\n" "($desktop_count packages)"
+    printf "│ [4] Programming Toolkit          %-18s │\n" "($programming_count packages)"
+    printf "│ [5] Media Editor and Viewer      %-18s │\n" "($media_count packages)"
+    printf "│ [6] Disk Management Tools        %-18s │\n" "($diskman_count packages)"
+    printf "│ [7] Security Tools               %-18s │\n" "($hacking_count packages)"
+    printf "│ [8] Full Desktop Suite           %-18s │\n" "($full_count packages)"
+    echo "│ [0] Abort                                           │"
+    echo "╰─────────────────────────────────────────────────────╯"
 }
 
 # Show help information
@@ -176,8 +186,12 @@ main() {
         esac
     done
 
-    # Initialize logging
+    # Initialize logging and tracking
     log_info "=== Bundle Setup Script Started ==="
+    local INSTALL_START_TIME=$(date +%s)
+    local SUCCESSFUL_PACKAGES=()
+    local FAILED_PACKAGES=()
+    local TOTAL_PACKAGES=0
 
     print_ascii_art
     echo ""
@@ -211,6 +225,7 @@ main() {
     sudo apt update
 
     for app in $apps_to_install; do
+        ((TOTAL_PACKAGES++))
         log_info "Installing $app..."
 
         # Choose the right install command
@@ -229,8 +244,10 @@ main() {
         # Execute and log (same for all)
         if $cmd >> "$LOGFILE" 2>&1; then
             log_success "$app installed successfully"
+            SUCCESSFUL_PACKAGES+=("$app")
         else
             log_error "Failed to install $app"
+            FAILED_PACKAGES+=("$app")
         fi
     done
 
@@ -265,7 +282,26 @@ main() {
         echo ""
     fi
 
-    log_success "=== Installation completed successfully! ==="
+    # Show installation summary
+    local end_time=$(date +%s)
+    local duration=$((end_time - INSTALL_START_TIME))
+    local minutes=$((duration / 60))
+    local seconds=$((duration % 60))
+
+    echo ""
+    log_info "═══════════════════════════════════════════"
+    log_info "Installation Summary:"
+    log_success "✓ Successfully installed: ${#SUCCESSFUL_PACKAGES[@]} packages"
+
+    if [[ ${#FAILED_PACKAGES[@]} -gt 0 ]]; then
+        log_error "✗ Failed to install: ${#FAILED_PACKAGES[@]} packages"
+        printf '   - %s\n' "${FAILED_PACKAGES[@]}"
+        echo ""
+    fi
+
+    log_info "⏱ Total time: ${minutes}m ${seconds}s"
+    log_info "═══════════════════════════════════════════"
+    log_success "=== Installation completed! ==="
 }
 
 main "$@"

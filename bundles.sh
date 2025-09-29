@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Enhanced error handling
+set -euo pipefail
+
 # ------------------------------------------
 #     ____  __  ___   ______  __    ___________
 #    / __ )/ / / / | / / __ \/ /   / ____/ ___/
@@ -57,6 +60,41 @@
 
 # Variables
 LOGFILE="install.log"
+
+# Enhanced logging with timestamps and levels
+log() {
+    local level="$1"
+    shift
+    local message="$*"
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "[$timestamp] [$level] $message" | tee -a "$LOGFILE"
+}
+
+log_info() { log "INFO" "$@"; }
+log_error() { log "ERROR" "$@"; }
+log_warn() { log "WARN" "$@"; }
+log_success() { log "SUCCESS" "$@"; }
+
+# Enhanced error handler
+error_handler() {
+    local line_num=$1
+    log_error "Script failed at line $line_num"
+    log_error "Last command: $BASH_COMMAND"
+    log_error "Cleaning up and exiting..."
+    cleanup
+    exit 1
+}
+
+# Cleanup function
+cleanup() {
+    log_info "Performing cleanup..."
+    # Add cleanup tasks here if needed
+}
+
+# Set up error trapping
+trap 'error_handler $LINENO' ERR
+trap 'log_info "Script interrupted by user"; cleanup; exit 130' SIGINT
+trap 'cleanup' EXIT
 
 # Define the lists of applications
 declare -A app_lists
@@ -120,8 +158,8 @@ get_user_choice() {
 
 # Main script
 main() {
-    # Capture force quitting event and exit safely
-    trap "echo 'Exiting...'; exit" SIGINT
+    # Initialize logging
+    log_info "=== Bundle Setup Script Started ==="
 
     print_ascii_art
     echo ""
@@ -130,16 +168,14 @@ main() {
     # Retrieve installation options
     install_type=$(get_user_choice)
     if [ "$install_type" == "abort" ]; then
-        echo "| Installation aborted."
-        echo "| Installation aborted by the user." >> "$LOGFILE"
+        log_info "Installation aborted by user"
         exit 0
     fi
     apps_to_install=${app_lists[$install_type]}
 
     # if the list is empty
     if [ -z "$apps_to_install" ]; then
-        echo "| Error: no applications to install."
-        echo "| Error: no applications to install." >> "$LOGFILE"
+        log_error "No applications to install for category: $install_type"
         exit 1
     fi
 
@@ -148,43 +184,37 @@ main() {
     echo "| $apps_to_install"
     read -p "| Do you want to proceed? (y/n): " confirm
     if [[ $confirm != [yY] ]]; then
-        echo "| Installation cancelled."
-        echo "| Installation cancelled by the user." >> "$LOGFILE"
+        log_info "Installation cancelled by user"
         exit 0
     fi
 
     # Loop through the apps and install them
+    log_info "Updating package lists..."
     sudo apt update
+
     for app in $apps_to_install; do
-        echo "| Installing $app..."
-        echo "| Installing $app..." >> "$LOGFILE"
+        log_info "Installing $app..."
 
         case "$app" in
             "lazygit")
                 if go install github.com/jesseduffield/lazygit@latest >> "$LOGFILE" 2>&1; then
-                    echo "| $app installed successfully"
-                    echo "| $app installed successfully" >> "$LOGFILE"
+                    log_success "$app installed successfully"
                 else
-                    echo "| Failed to install $app"
-                    echo "| Failed to install $app" >> "$LOGFILE"
+                    log_error "Failed to install $app"
                 fi
                     ;;
             "lazydocker")
                 if go install github.com/jesseduffield/lazydocker@latest >> "$LOGFILE" 2>&1; then
-                    echo "| $app installed successfully"
-                    echo "| $app installed successfully" >> "$LOGFILE"
+                    log_success "$app installed successfully"
                 else
-                    echo "| Failed to install $app"
-                    echo "| Failed to install $app" >> "$LOGFILE"
+                    log_error "Failed to install $app"
                 fi
                     ;;
             *)
                 if sudo apt-get install -y "$app" >> "$LOGFILE" 2>&1; then
-                    echo "| $app installed successfully"
-                    echo "| $app installed successfully" >> "$LOGFILE"
+                    log_success "$app installed successfully"
                 else
-                    echo "| Failed to install $app"
-                    echo "| Failed to install $app" >> "$LOGFILE"
+                    log_error "Failed to install $app"
                 fi
                     ;;
         esac
@@ -192,42 +222,31 @@ main() {
 
     # Installing Rust if installed
     if [[ "$apps_to_install" =~ "rustup" ]]; then
-        echo "| Installing Rust programming language..."
-        echo "| Installing Rust programming language..." >> "$LOGFILE"
+        log_info "Installing Rust programming language..."
 
         if rustup install stable >> "$LOGFILE" 2>&1; then
-            echo "| Rust installed successfully"
-            echo "| Rust installed successfully" >> "$LOGFILE"
+            log_success "Rust installed successfully"
         else
-            echo "| Failed to install Rust"
-            echo "| Failed to install Rust" >> "$LOGFILE"
+            log_error "Failed to install Rust"
         fi
     else
-        printf "\033[31m| Not installing Rust\n"
-        printf "\033[31m| Not installing Rust\n" >> "$LOGFILE"
+        log_info "Not installing Rust (not selected)"
     fi
 
     # Setting up the SSH server if installed
     if [[ $apps_to_install =~ "openssh-server" ]]; then
-        echo "| Setting up SSH server..."
-        echo "| Setting up SSH server..." >> "$LOGFILE"
+        log_info "Setting up SSH server..."
 
         if sudo systemctl enable ssh >> "$LOGFILE" 2>&1 && sudo systemctl start ssh >> "$LOGFILE" 2>&1; then
-            echo "| SSH server set up successfully"
-            echo "| SSH server set up successfully" >> "$LOGFILE"
+            log_success "SSH server set up successfully"
         else
-            echo "| Failed to set up SSH server"
-            echo "| Failed to set up SSH server" >> "$LOGFILE"
+            log_error "Failed to set up SSH server"
         fi
-
     else
-        printf "\033[31m| Not setting up SSH\n"
-        printf "\033[31m| Not setting up SSH\n" >> "$LOGFILE"
-
+        log_info "Not setting up SSH (not selected)"
     fi
 
-    echo "| Installation complete!"
-    echo "| Installation complete!" >> "$LOGFILE"
+    log_success "=== Installation completed successfully! ==="
 }
 
 main "$@"

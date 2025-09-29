@@ -1,4 +1,6 @@
-# Bundles
+<h1 align="center">
+Bundles
+</h1>
 
 <p align="center">
     <b>

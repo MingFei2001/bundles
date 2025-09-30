@@ -10,16 +10,18 @@
 
 ## Introduction
 
-This bash script provides an easy way to install a curated set of applications on Debian-based systems. It offers different installation categories to suit various user needs:
+This bash script provides an easy way to install curated collections of packages on Debian-based systems. It offers different installation categories to suit various user needs, automating the process of setting up a new system.
 
-- Basic Tools
-- CLI Tools
-- Desktop Applications
-- Programming Toolkit
-- Media Tools
-- Disk Management
-- Security Tools
-- Full Suite
+This script offers the following installation bundles. The numbers correspond to the choices in the script's menu.
+
+1.  Basic Tools
+2.  CLI Tools
+3.  Desktop Applications
+4.  Programming Toolkit
+5.  Media Tools
+6.  Disk Management
+7.  Security Tools
+8.  Full Suite
 
 The script automates the process of installing multiple applications, saving time and effort after a fresh system install.
 
@@ -36,7 +38,7 @@ bash bundles.sh
 ```
 
 ## TODO
-+ Create an ansible playbook to mass deploy
+- [ ] Create an Ansible playbook for mass deployment.
 
 ## License
-This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.
+This project is licensed under the [MIT License](./LICENSE).

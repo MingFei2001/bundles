@@ -62,7 +62,7 @@ declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip power-profiles-daemon mtr unp"
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon lshw cbonsai s-tui"
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird"
-app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ndcu"
+app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ncdu"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid geeqie"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat"
@@ -120,32 +120,35 @@ USAGE:
 
 PACKAGE CATEGORIES:
     [1] Basic Tools
-        curl, build-essential, htop, git, vim, fzf, ripgrep, cmake, zip, tmux,
-        unzip, locate, bat, jq, wget, rsync, openssh-server, mtr, unp
+        7zip, bat, build-essential, cmake, curl, fdclone, fzf, git, htop, jq,
+        locate, mtr, openssh-server, power-profiles-daemon, ripgrep, rsync,
+        tmux, unp, unzip, vim, wget, zip
 
     [2] CLI Tools
-        btop, tldr, neofetch, cmatrix, speedtest-cli, ranger, tty-clock, lynx,
-        cava, sysbench, vlock, mocp, pipes-sh, iotop, iftop, atop, nvtop
+        atop, btop, cava, cbonsai, cmatrix, iftop, iotop, iperf3, lshw, lynx,
+        mocp, neofetch, nvtop, pipes-sh, ranger, s-tui, speedtest-cli,
+        sysbench, tldr, tty-clock, vlock, wavemon
 
     [3] Desktop Applications
-        qalculate-gtk, hardinfo, cpu-x, libreoffice, gdebi, thunderbird
+        cpu-x, gdebi, hardinfo, libreoffice, qalculate-gtk, thunderbird
 
     [4] Programming Toolkit
-        python3-full, python3-pip, golang, npm, nodejs, gcc, rustup, docker.io,
-        docker-compose, lazygit, lazydocker
+        docker-compose, docker.io, gcc, golang, lazygit, lazydocker, nodejs,
+        npm, python3-full, python3-pip, python3-virtualenv, rustup
 
     [5] Media Editor and Viewer
-        kdenlive, vlc, blender, audacity, gimp, inkscape, krita, obs-studio,
-        ffmpeg, darktable, mpv, celluloid, geeqie
+        audacity, blender, celluloid, darktable, ffmpeg, geeqie, gimp,
+        inkscape, kdenlive, krita, mpv, obs-studio, vlc
 
     [6] Disk Management Tools
-        bleachbit, stacer, gnome-disk-utility, gparted, duf, fdisk, ncdu
+        bleachbit, duf, fdisk, gnome-disk-utility, gparted, kdiskmark, ncdu,
+        stacer
 
     [7] Security Tools
-        nmap, wireshark, tshark, gufw, clamav, clamtk, gnupg, netcat
+        clamav, clamtk, gnupg, gufw, netcat, nmap, tshark, wireshark
 
-    [8] Full Suite
-        All categories combined
+    [8] Full Desktop Suite
+        Includes Basic, CLI, Desktop, Programming, and Media bundles.
 
 For more info: https://github.com/MingFei2001/bundles
 EOF

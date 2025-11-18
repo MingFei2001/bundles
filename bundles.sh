@@ -230,7 +230,6 @@ main() {
     sudo apt update
 
     for app in $apps_to_install; do
-        ((TOTAL_PACKAGES++))
         log_info "Installing $app..."
 
         # Choose the right install command

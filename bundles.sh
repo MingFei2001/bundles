@@ -61,7 +61,7 @@ trap 'cleanup' EXIT
 declare -A app_lists
 app_lists[basic]="curl build-essential htop git vim fzf ripgrep fdclone cmake zip tmux unzip locate bat jq wget rsync openssh-server 7zip mtr unp reptyr lshw"
 app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx cava sysbench vlock mocp pipes-sh iotop iftop atop nvtop iperf3 wavemon cbonsai s-tui extrepo"
-app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird power-profiles-daemon"
+app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird power-profiles-daemon fonts-recommended"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ncdu"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
 app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid geeqie"

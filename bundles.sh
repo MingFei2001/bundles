@@ -64,7 +64,7 @@ app_lists[cli]="btop tldr neofetch cmatrix speedtest-cli ranger tty-clock lynx c
 app_lists[desktop]="qalculate-gtk hardinfo cpu-x libreoffice gdebi thunderbird power-profiles-daemon fonts-recommended"
 app_lists[diskman]="bleachbit stacer gnome-disk-utility gparted duf fdisk kdiskmark ncdu"
 app_lists[programming]="python3-full python3-pip python3-virtualenv golang npm nodejs gcc rustup docker.io docker-compose lazygit lazydocker"
-app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid geeqie"
+app_lists[media]="kdenlive vlc blender audacity gimp inkscape krita obs-studio ffmpeg darktable mpv celluloid geeqie krename"
 app_lists[hacking]="nmap wireshark tshark gufw clamav clamtk gnupg netcat apparmor apparmor-utils"
 app_lists[full]="${app_lists[basic]} ${app_lists[cli]} ${app_lists[desktop]} ${app_lists[programming]} ${app_lists[media]}"
 
@@ -120,35 +120,28 @@ USAGE:
 
 PACKAGE CATEGORIES:
     [1] Basic Tools
-        7zip, bat, build-essential, cmake, curl, fdclone, fzf, git, htop, jq,
-        locate, mtr, openssh-server, power-profiles-daemon, ripgrep, rsync,
-        tmux, unp, unzip, vim, wget, zip
+    - some basic command line tools to get started e.g. curl, git, vim, fzf etc
 
     [2] CLI Tools
-        atop, btop, cava, cbonsai, cmatrix, iftop, iotop, iperf3, lshw, lynx,
-        mocp, neofetch, nvtop, pipes-sh, ranger, s-tui, speedtest-cli,
-        sysbench, tldr, tty-clock, vlock, wavemon
+    - some more curated CLI tools for advanced user e.g. btop, tldr, iperf3, iotop etc
 
     [3] Desktop Applications
-        cpu-x, gdebi, hardinfo, libreoffice, qalculate-gtk, thunderbird
+    - some desktop applications for daily uses e.g. power-profiles-daemon, thunderbird, cpu-x etc
 
     [4] Programming Toolkit
-        docker-compose, docker.io, gcc, golang, lazygit, lazydocker, nodejs,
-        npm, python3-full, python3-pip, python3-virtualenv, rustup
+    - programming language and cli tools e.g. python3, pipx, golang, rust etc
 
     [5] Media Editor and Viewer
-        audacity, blender, celluloid, darktable, ffmpeg, geeqie, gimp,
-        inkscape, kdenlive, krita, mpv, obs-studio, vlc
+    - desktop application for editing and previewing media file e.g. kdenlive, gimp, krita etc
 
     [6] Disk Management Tools
-        bleachbit, duf, fdisk, gnome-disk-utility, gparted, kdiskmark, ncdu,
-        stacer
+    - GUI and CLI tools for managing disk and storage e.g. gnome-disk-utility, gparted, duf etc
 
     [7] Security Tools
-        clamav, clamtk, gnupg, gufw, netcat, nmap, tshark, wireshark
+    - some security tools e.g. wireshark, nmap, gufw, clamav etc
 
     [8] Full Desktop Suite
-        Includes Basic, CLI, Desktop, Programming, and Media bundles.
+    - everything above
 
 For more info: https://github.com/MingFei2001/bundles
 EOF
